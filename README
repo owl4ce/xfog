@@ -1,0 +1,21 @@
+xfog
+====
+
+Library to free X.Org window geometry shackles by turning off and locks
+the `PResizeInc` flag when getting the WM_NORMAL_HINTS window property.
+
+RATIONALE
+---------
+
+To free all window sizes while in tile mode, especially for terminal emulator
+in stacking WM with third party programs (zentile, etc). So, the size becomes
+flexible without being strict to geometry. Specifically used with LD_PRELOAD.
+
+```
+$ LD_PRELOAD='/usr/local/lib/xfog.so' program
+```
+
+The $LD_PRELOAD environment variable must at least be set when executing the
+executable of window manager. For example, before `exec` in openbox-session.
+
+https://github.com/owl4ce/hmg/blob/main/usr/bin/openbox-session#L24-L25
